@@ -16,10 +16,15 @@ rawlist = re.split(b"\x10\x03|\x42\x08\x0A\x04", data[start:end])
 rawlist = [r for r in rawlist[:-1] if r]
 
 start = init + 12
-print("Start of active langs: " + str(hex(start)))
+print("Start of active languages: " + str(hex(start)))
 current = data[start:start+4]
 print("Current language is " + current.decode("utf-8"))
 rawlist.remove(current)
+
+if not rawlist:
+    print("Only one language installed! Install more from the Battle.net launcher to use the shuffler.")
+    exit()
+
 print("Available languages: " + ", ".join([r.decode("utf-8") for r in rawlist]))
 
 picked = random.choice(rawlist)
