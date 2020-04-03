@@ -1,6 +1,8 @@
-import re, random
+import re, random, os
 
-with open("toconvert.db", "rb") as infile:
+os.chdir(r"C:\ProgramData\Battle.net\Agent")
+
+with open("product.db", "rb") as infile:
     data = infile.read()
 
 init = data.find(b"Overwatch") + 9
@@ -16,19 +18,22 @@ rawlist = [r for r in rawlist[:-1] if r]
 start = init + 12
 print("Start of active langs: " + str(hex(start)))
 current = data[start:start+4]
-print("Current language is " + str(current))
+print("Current language is " + current.decode("utf-8"))
 rawlist.remove(current)
 print("Available languages: " + ", ".join([r.decode("utf-8") for r in rawlist]))
 
 picked = random.choice(rawlist)
-print("The picked language is " + str(picked))
+print("The picked language is " + picked.decode("utf-8"))
 
 newdata = bytearray(data)
 
 newdata[start:start+4] = picked
 newdata[start+6:start+10] = picked
 
-print(newdata[init:end])
-
-with open("nibba.db", "wb") as outfile:
+with open("product2.db", "wb") as outfile:
     outfile.write(newdata)
+
+os.remove("product.db")
+os.rename("product2.db", "product.db")
+
+print("Written new language data successfully!")
