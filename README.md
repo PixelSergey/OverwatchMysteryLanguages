@@ -1,11 +1,13 @@
-# Overwatch Shuffler
+# Overwatch: Mystery languages
+
+It's like mystery heroes, but worse!
 
 A simple Python script to randomise the language you play Overwatch in.
 The script takes the installed languages on your PC, and chooses one that you don't currently have equipped.
 The text and voice lanuage are set to be the same, because it would be wonky otherwise.
 
 ## Notes:
-- After launching the Battle.net app this way, make sure the app fully loads before clicking `Play` or `Settings`.
+- After launching the Battle.net app using the script, make sure the app fully loads before clicking `Play` or `Settings`.
 - You must have more than one language installed in the Battle.net app for Overwatch. 
 Simply install them like normal by choosing them from Overwatch settings inside the Battle.net app.
 - You may or may not need to be an admin to do this, testing is required
